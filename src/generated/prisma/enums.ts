@@ -9,7 +9,19 @@
 * 🟢 You can import this file directly.
 */
 
+export const ServiceType = {
+  BATH: 'BATH',
+  GROOMING: 'GROOMING',
+  BATH_AND_GROOMING: 'BATH_AND_GROOMING'
+} as const
+
+export type ServiceType = (typeof ServiceType)[keyof typeof ServiceType]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const PetSize = {
+  SMALL: 'SMALL',
+  MEDIUM: 'MEDIUM',
+  LARGE: 'LARGE'
+} as const
+
+export type PetSize = (typeof PetSize)[keyof typeof PetSize]

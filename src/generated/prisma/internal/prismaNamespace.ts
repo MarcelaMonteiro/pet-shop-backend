@@ -666,6 +666,34 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
+ * Reference to a field of type 'ServiceType'
+ */
+export type EnumServiceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ServiceType'>
+    
+
+
+/**
+ * Reference to a field of type 'ServiceType[]'
+ */
+export type ListEnumServiceTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ServiceType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'PetSize'
+ */
+export type EnumPetSizeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PetSize'>
+    
+
+
+/**
+ * Reference to a field of type 'PetSize[]'
+ */
+export type ListEnumPetSizeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PetSize[]'>
+    
+
+
+/**
  * Reference to a field of type 'Float'
  */
 export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>

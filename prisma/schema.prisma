@@ -12,15 +12,32 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum ServiceType {
+  BATH
+  GROOMING
+  BATH_AND_GROOMING
+}
+
+enum PetSize {
+  SMALL
+  MEDIUM
+  LARGE
+}
+
 model User {
   id Int @id @default(autoincrement())
   name String
   email String @unique
   password String
+    appointments Appointment[]
+
 }
 model Appointment {
-  id          Int     @id @default(autoincrement())
+  id          Int        @id @default(autoincrement())
   userId      Int
+  user        User       @relation(fields: [userId], references: [id])
+
   serviceType ServiceType
   petSize     PetSize
   date        String
