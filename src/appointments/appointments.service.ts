@@ -57,4 +57,21 @@ export class AppointmentsService {
       orderBy: [{ date: 'asc' }, { time: 'asc' }],
     });
   }
+
+  async delete(id: number, userId: number) {
+    const deleted = await this.prismaService.appointment.deleteMany({
+      where: {
+        id,
+        userId,
+      },
+    });
+
+    if (deleted.count === 0) {
+      throw new BadRequestException(
+        'Agendamento não encontrado ou não pertence a você',
+      );
+    }
+
+    return { message: 'Agendamento cancelado com sucesso' };
+  }
 }

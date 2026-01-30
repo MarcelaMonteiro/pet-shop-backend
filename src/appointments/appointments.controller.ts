@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Req,
+  UseGuards,
+  Param,
+} from '@nestjs/common';
 import { AppointmentsService } from './appointments.service';
 import { AppointmentDTO } from './dtos/appointment';
 import { PreviewAppointmentDTO } from './dtos/preview-appointment';
@@ -26,5 +35,14 @@ export class AppointmentsController {
   @Get('me')
   listMine(@Req() req: Request & { user: { id: number } }) {
     return this.appointmentsService.listMine(req.user.id);
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard('jwt'))
+  delete(
+    @Param('id') id: string,
+    @Req() req: Request & { user: { id: number } },
+  ) {
+    return this.appointmentsService.delete(Number(id), req.user.id);
   }
 }
