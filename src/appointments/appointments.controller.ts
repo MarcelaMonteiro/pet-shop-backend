@@ -1,18 +1,20 @@
 import {
   Body,
   Controller,
-  Get,
-  Post,
   Delete,
+  Get,
+  Param,
+  Post,
   Req,
   UseGuards,
-  Param,
 } from '@nestjs/common';
-import { AppointmentsService } from './appointments.service';
-import { AppointmentDTO } from './dtos/appointment';
-import { PreviewAppointmentDTO } from './dtos/preview-appointment';
-import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
+
+import { AppointmentsService } from './appointments.service';
+import { CreateAppointmentDTO } from './dtos/create-appointment';
+import { PreviewAppointmentDTO } from './dtos/preview-appointment';
+import { AppointmentResponseDTO } from './dtos/response-appointment';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('appointments')
 @UseGuards(AuthGuard('jwt'))
@@ -20,29 +22,31 @@ export class AppointmentsController {
   constructor(private readonly appointmentsService: AppointmentsService) {}
 
   @Post('preview')
-  preview(@Body() data: PreviewAppointmentDTO) {
-    return this.appointmentsService.preview(data);
+  preview(@Body() dto: PreviewAppointmentDTO): { price: number } {
+    return this.appointmentsService.preview(dto);
   }
 
-  @Post('create')
+  @Post()
   create(
-    @Body() data: AppointmentDTO,
+    @Body() data: CreateAppointmentDTO,
     @Req() req: Request & { user: { id: number } },
-  ) {
+  ): Promise<AppointmentResponseDTO> {
     return this.appointmentsService.create(data, req.user.id);
   }
 
   @Get('me')
-  listMine(@Req() req: Request & { user: { id: number } }) {
+  listMine(
+    @Req() req: Request & { user: { id: number } },
+  ): Promise<AppointmentResponseDTO[]> {
+    console.log('BATATA');
     return this.appointmentsService.listMine(req.user.id);
   }
 
   @Delete(':id')
-  @UseGuards(AuthGuard('jwt'))
   delete(
     @Param('id') id: string,
     @Req() req: Request & { user: { id: number } },
-  ) {
+  ): Promise<{ ok: true }> {
     return this.appointmentsService.delete(Number(id), req.user.id);
   }
 }

@@ -42,6 +42,7 @@ export type AppointmentMinAggregateOutputType = {
   id: number | null
   userId: number | null
   serviceType: $Enums.ServiceType | null
+  petName: string | null
   petSize: $Enums.PetSize | null
   date: string | null
   time: string | null
@@ -52,6 +53,7 @@ export type AppointmentMaxAggregateOutputType = {
   id: number | null
   userId: number | null
   serviceType: $Enums.ServiceType | null
+  petName: string | null
   petSize: $Enums.PetSize | null
   date: string | null
   time: string | null
@@ -62,6 +64,7 @@ export type AppointmentCountAggregateOutputType = {
   id: number
   userId: number
   serviceType: number
+  petName: number
   petSize: number
   date: number
   time: number
@@ -86,6 +89,7 @@ export type AppointmentMinAggregateInputType = {
   id?: true
   userId?: true
   serviceType?: true
+  petName?: true
   petSize?: true
   date?: true
   time?: true
@@ -96,6 +100,7 @@ export type AppointmentMaxAggregateInputType = {
   id?: true
   userId?: true
   serviceType?: true
+  petName?: true
   petSize?: true
   date?: true
   time?: true
@@ -106,6 +111,7 @@ export type AppointmentCountAggregateInputType = {
   id?: true
   userId?: true
   serviceType?: true
+  petName?: true
   petSize?: true
   date?: true
   time?: true
@@ -203,6 +209,7 @@ export type AppointmentGroupByOutputType = {
   id: number
   userId: number
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -236,6 +243,7 @@ export type AppointmentWhereInput = {
   id?: Prisma.IntFilter<"Appointment"> | number
   userId?: Prisma.IntFilter<"Appointment"> | number
   serviceType?: Prisma.EnumServiceTypeFilter<"Appointment"> | $Enums.ServiceType
+  petName?: Prisma.StringFilter<"Appointment"> | string
   petSize?: Prisma.EnumPetSizeFilter<"Appointment"> | $Enums.PetSize
   date?: Prisma.StringFilter<"Appointment"> | string
   time?: Prisma.StringFilter<"Appointment"> | string
@@ -247,6 +255,7 @@ export type AppointmentOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   serviceType?: Prisma.SortOrder
+  petName?: Prisma.SortOrder
   petSize?: Prisma.SortOrder
   date?: Prisma.SortOrder
   time?: Prisma.SortOrder
@@ -262,6 +271,7 @@ export type AppointmentWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.AppointmentWhereInput | Prisma.AppointmentWhereInput[]
   userId?: Prisma.IntFilter<"Appointment"> | number
   serviceType?: Prisma.EnumServiceTypeFilter<"Appointment"> | $Enums.ServiceType
+  petName?: Prisma.StringFilter<"Appointment"> | string
   petSize?: Prisma.EnumPetSizeFilter<"Appointment"> | $Enums.PetSize
   date?: Prisma.StringFilter<"Appointment"> | string
   time?: Prisma.StringFilter<"Appointment"> | string
@@ -273,6 +283,7 @@ export type AppointmentOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   serviceType?: Prisma.SortOrder
+  petName?: Prisma.SortOrder
   petSize?: Prisma.SortOrder
   date?: Prisma.SortOrder
   time?: Prisma.SortOrder
@@ -291,6 +302,7 @@ export type AppointmentScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Appointment"> | number
   userId?: Prisma.IntWithAggregatesFilter<"Appointment"> | number
   serviceType?: Prisma.EnumServiceTypeWithAggregatesFilter<"Appointment"> | $Enums.ServiceType
+  petName?: Prisma.StringWithAggregatesFilter<"Appointment"> | string
   petSize?: Prisma.EnumPetSizeWithAggregatesFilter<"Appointment"> | $Enums.PetSize
   date?: Prisma.StringWithAggregatesFilter<"Appointment"> | string
   time?: Prisma.StringWithAggregatesFilter<"Appointment"> | string
@@ -299,6 +311,7 @@ export type AppointmentScalarWhereWithAggregatesInput = {
 
 export type AppointmentCreateInput = {
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -310,6 +323,7 @@ export type AppointmentUncheckedCreateInput = {
   id?: number
   userId: number
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -318,6 +332,7 @@ export type AppointmentUncheckedCreateInput = {
 
 export type AppointmentUpdateInput = {
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -329,6 +344,7 @@ export type AppointmentUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -339,6 +355,7 @@ export type AppointmentCreateManyInput = {
   id?: number
   userId: number
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -347,6 +364,7 @@ export type AppointmentCreateManyInput = {
 
 export type AppointmentUpdateManyMutationInput = {
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -357,6 +375,7 @@ export type AppointmentUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -382,6 +401,7 @@ export type AppointmentCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   serviceType?: Prisma.SortOrder
+  petName?: Prisma.SortOrder
   petSize?: Prisma.SortOrder
   date?: Prisma.SortOrder
   time?: Prisma.SortOrder
@@ -398,6 +418,7 @@ export type AppointmentMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   serviceType?: Prisma.SortOrder
+  petName?: Prisma.SortOrder
   petSize?: Prisma.SortOrder
   date?: Prisma.SortOrder
   time?: Prisma.SortOrder
@@ -408,6 +429,7 @@ export type AppointmentMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   serviceType?: Prisma.SortOrder
+  petName?: Prisma.SortOrder
   petSize?: Prisma.SortOrder
   date?: Prisma.SortOrder
   time?: Prisma.SortOrder
@@ -480,6 +502,7 @@ export type FloatFieldUpdateOperationsInput = {
 
 export type AppointmentCreateWithoutUserInput = {
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -489,6 +512,7 @@ export type AppointmentCreateWithoutUserInput = {
 export type AppointmentUncheckedCreateWithoutUserInput = {
   id?: number
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -528,6 +552,7 @@ export type AppointmentScalarWhereInput = {
   id?: Prisma.IntFilter<"Appointment"> | number
   userId?: Prisma.IntFilter<"Appointment"> | number
   serviceType?: Prisma.EnumServiceTypeFilter<"Appointment"> | $Enums.ServiceType
+  petName?: Prisma.StringFilter<"Appointment"> | string
   petSize?: Prisma.EnumPetSizeFilter<"Appointment"> | $Enums.PetSize
   date?: Prisma.StringFilter<"Appointment"> | string
   time?: Prisma.StringFilter<"Appointment"> | string
@@ -537,6 +562,7 @@ export type AppointmentScalarWhereInput = {
 export type AppointmentCreateManyUserInput = {
   id?: number
   serviceType: $Enums.ServiceType
+  petName: string
   petSize: $Enums.PetSize
   date: string
   time: string
@@ -545,6 +571,7 @@ export type AppointmentCreateManyUserInput = {
 
 export type AppointmentUpdateWithoutUserInput = {
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -554,6 +581,7 @@ export type AppointmentUpdateWithoutUserInput = {
 export type AppointmentUncheckedUpdateWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -563,6 +591,7 @@ export type AppointmentUncheckedUpdateWithoutUserInput = {
 export type AppointmentUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   serviceType?: Prisma.EnumServiceTypeFieldUpdateOperationsInput | $Enums.ServiceType
+  petName?: Prisma.StringFieldUpdateOperationsInput | string
   petSize?: Prisma.EnumPetSizeFieldUpdateOperationsInput | $Enums.PetSize
   date?: Prisma.StringFieldUpdateOperationsInput | string
   time?: Prisma.StringFieldUpdateOperationsInput | string
@@ -575,6 +604,7 @@ export type AppointmentSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   id?: boolean
   userId?: boolean
   serviceType?: boolean
+  petName?: boolean
   petSize?: boolean
   date?: boolean
   time?: boolean
@@ -586,6 +616,7 @@ export type AppointmentSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   id?: boolean
   userId?: boolean
   serviceType?: boolean
+  petName?: boolean
   petSize?: boolean
   date?: boolean
   time?: boolean
@@ -597,6 +628,7 @@ export type AppointmentSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   id?: boolean
   userId?: boolean
   serviceType?: boolean
+  petName?: boolean
   petSize?: boolean
   date?: boolean
   time?: boolean
@@ -608,13 +640,14 @@ export type AppointmentSelectScalar = {
   id?: boolean
   userId?: boolean
   serviceType?: boolean
+  petName?: boolean
   petSize?: boolean
   date?: boolean
   time?: boolean
   price?: boolean
 }
 
-export type AppointmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "serviceType" | "petSize" | "date" | "time" | "price", ExtArgs["result"]["appointment"]>
+export type AppointmentOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "serviceType" | "petName" | "petSize" | "date" | "time" | "price", ExtArgs["result"]["appointment"]>
 export type AppointmentInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }
@@ -634,6 +667,7 @@ export type $AppointmentPayload<ExtArgs extends runtime.Types.Extensions.Interna
     id: number
     userId: number
     serviceType: $Enums.ServiceType
+    petName: string
     petSize: $Enums.PetSize
     date: string
     time: string
@@ -1065,6 +1099,7 @@ export interface AppointmentFieldRefs {
   readonly id: Prisma.FieldRef<"Appointment", 'Int'>
   readonly userId: Prisma.FieldRef<"Appointment", 'Int'>
   readonly serviceType: Prisma.FieldRef<"Appointment", 'ServiceType'>
+  readonly petName: Prisma.FieldRef<"Appointment", 'String'>
   readonly petSize: Prisma.FieldRef<"Appointment", 'PetSize'>
   readonly date: Prisma.FieldRef<"Appointment", 'String'>
   readonly time: Prisma.FieldRef<"Appointment", 'String'>

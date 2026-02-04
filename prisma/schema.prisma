@@ -39,6 +39,7 @@ model Appointment {
   user        User       @relation(fields: [userId], references: [id])
 
   serviceType ServiceType
+  petName     String
   petSize     PetSize
   date        String
   time        String

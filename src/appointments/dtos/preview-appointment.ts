@@ -1,10 +1,9 @@
-import { IsEnum } from 'class-validator';
-import { PetSize, ServiceType } from '../appointments.types';
+import { IsIn } from 'class-validator';
 
 export class PreviewAppointmentDTO {
-  @IsEnum(PetSize)
-  petSize: PetSize;
+  @IsIn(['SMALL', 'MEDIUM', 'LARGE'])
+  petSize: 'SMALL' | 'MEDIUM' | 'LARGE';
 
-  @IsEnum(ServiceType)
-  serviceType: ServiceType;
+  @IsIn(['BATH', 'GROOMING', 'BATH_AND_GROOMING'])
+  serviceType: 'BATH' | 'GROOMING' | 'BATH_AND_GROOMING';
 }

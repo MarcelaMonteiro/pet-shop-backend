@@ -85,6 +85,7 @@ export const AppointmentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   serviceType: 'serviceType',
+  petName: 'petName',
   petSize: 'petSize',
   date: 'date',
   time: 'time',
