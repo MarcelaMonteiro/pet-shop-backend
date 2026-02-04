@@ -38,7 +38,6 @@ export class AppointmentsController {
   listMine(
     @Req() req: Request & { user: { id: number } },
   ): Promise<AppointmentResponseDTO[]> {
-    console.log('BATATA');
     return this.appointmentsService.listMine(req.user.id);
   }
 

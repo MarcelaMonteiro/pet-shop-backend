@@ -12,6 +12,19 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+  async me(userId: number) {
+    const user = await this.prismaService.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+
+    return user;
+  }
+
   async signup(data: SignUpDTO) {
     const userAlreadyExists = await this.prismaService.user.findUnique({
       where: {
@@ -56,7 +69,7 @@ export class AuthService {
     }
 
     const payload: JwtPayload = {
-      sub: String(user.id),
+      sub: user.id,
       name: user.name,
       email: user.email,
     };
